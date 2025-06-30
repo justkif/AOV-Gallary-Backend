@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.justkif.gallary.exceptions.NotFoundException;
 import dev.justkif.gallary.models.Hero;
 import dev.justkif.gallary.services.HeroService;
 
@@ -22,11 +21,7 @@ public class HeroController {
 
     @GetMapping("")
     List<Hero> getAll() {
-        List<Hero> heroGetAll = heroService.getAll();
-        if (heroGetAll.isEmpty()) {
-            throw new NotFoundException("No hero found.");
-        }
-        return heroGetAll;
+        return heroService.getAll();
     }
 
 }

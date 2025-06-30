@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import dev.justkif.gallary.models.Hero;
 import dev.justkif.gallary.repositories.HeroRepository;
+import dev.justkif.gallary.utils.CheckEmpty;
 
 @Service
 public class HeroService {
@@ -17,7 +18,10 @@ public class HeroService {
     }
 
     public List<Hero> getAll() {
-        return heroRepository.findAll();
+        return CheckEmpty.checkList(
+            heroRepository.findAll(), 
+            "No heros found."
+        );
     }
 
 }
